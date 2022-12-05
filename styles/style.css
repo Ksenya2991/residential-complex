@@ -1,0 +1,498 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400;700&family=Roboto:wght@300&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /*border: toVw(1px) solid white;*/
+}
+
+body, html {
+  font-family: "Roboto", "Raleway", "Playfair Display", "Sans-serif";
+  color: #FFFFFF;
+  background-color: #242B33;
+}
+
+a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+ul {
+  list-style: none;
+}
+
+h2 {
+  font-family: "Playfair Display";
+  font-weight: 700;
+  font-size: 1.875vw;
+  color: #D4C17F;
+}
+
+.logo img {
+  width: 6.9791666667vw;
+}
+
+.menu-link {
+  font-size: 0.7291666667vw;
+  font-family: "Raleway";
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+.menu-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 0.0520833333vw;
+  bottom: -0.15625vw;
+  left: 0;
+  background-color: #FFFFFF;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.menu-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.header {
+  background-image: url(../img/header-background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+.header__top-info {
+  width: 57.9166666667vw;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5625vw;
+  margin-bottom: 11.71875vw;
+}
+.header__top-info_menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2.0833333333vw;
+}
+.header__center-info {
+  width: 30.3125vw;
+  margin: auto;
+}
+.header__center-info h1 {
+  font-family: "Playfair Display";
+  font-size: 2.5vw;
+  font-weight: 700;
+  text-align: center;
+  color: #D4C17F;
+  position: relative;
+}
+.header__center-info h1::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-image: url(../img/mouse.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 2.0833333333vw;
+  height: 2.0833333333vw;
+  margin-top: 0.78125vw;
+  left: 50%;
+  -webkit-animation: mouse 3s linear 0s infinite normal none;
+          animation: mouse 3s linear 0s infinite normal none;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+@-webkit-keyframes mouse {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(100px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes mouse {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(100px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.header__center-info_contact-details {
+  width: 27.5520833333vw;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 17.7083333333vw;
+}
+.header__center-info_contact-details a {
+  font-family: "Raleway";
+  font-weight: 400;
+  font-size: 0.9375vw;
+}
+.header__center-info_contact-details .address {
+  position: relative;
+}
+.header__center-info_contact-details .address::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../img/map-point-icon.svg);
+  width: 1.09375vw;
+  height: 1.09375vw;
+  left: -2.0833333333vw;
+  top: 0;
+}
+.header__center-info_contact-details .phone-number {
+  position: relative;
+}
+.header__center-info_contact-details .phone-number::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../img/phone-call-icon.svg);
+  width: 1.09375vw;
+  height: 1.09375vw;
+  left: -2.0833333333vw;
+}
+
+.residence-advantages {
+  width: 41.3541666667vw;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 6.25vw;
+  margin-bottom: 6.25vw;
+  position: relative;
+}
+.residence-advantages__block {
+  text-align: center;
+}
+.residence-advantages__block p {
+  font-family: "Roboto";
+  font-size: 1.0416666667vw;
+  font-weight: 300;
+  margin-top: 2.7604166667vw;
+}
+.residence-advantages::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-image: url(../img/II.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 15.6770833333vw;
+  height: 16.6666666667vw;
+  left: 41.3541666667vw;
+}
+
+.apartments {
+  width: 57.2916666667vw;
+  margin: auto;
+  position: relative;
+}
+.apartments__example {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5625vw;
+  margin-top: 5.2083333333vw;
+}
+.apartments__example_item {
+  position: relative;
+  cursor: pointer;
+}
+.apartments__example_item .item-img {
+  transition: 1s;
+}
+.apartments__example_item .item-img img {
+  width: 27.8645833333vw;
+}
+.apartments__example_item .item-img:hover {
+  transform: scale(1.1);
+}
+.apartments__example_item .item-title {
+  font-family: "Raleway";
+  font-weight: 400;
+  font-size: 1.25vw;
+  position: absolute;
+  left: 2.6041666667vw;
+  bottom: 2.6041666667vw;
+}
+.apartments::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../img/III.svg);
+  width: 25vw;
+  height: 16.6666666667vw;
+  top: 5.2083333333vw;
+  left: -11.9791666667vw;
+}
+
+.cta {
+  background-image: url(../img/cta-background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  padding: 9.375vw 21.09375vw;
+  height: 29.1666666667vw;
+}
+.cta__wrapper {
+  width: 57.8125vw;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.cta__wrapper_content p {
+  font-family: "Raleway";
+  font-weight: 400;
+  font-size: 0.8333333333vw;
+  margin-top: 2.6041666667vw;
+}
+.cta__wrapper_form {
+  width: 28.125vw;
+  padding-top: 3.3854166667vw;
+}
+.cta__wrapper_form_details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.8229166667vw;
+}
+
+.input-details {
+  display: block;
+  border: none;
+  width: 13.28125vw;
+  height: 2.6041666667vw;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding-left: 4.6875vw;
+  font-family: "Raleway";
+  font-weight: 400;
+  font-size: 0.7291666667vw;
+  color: #BEBEBE;
+}
+.input-details::-moz-placeholder {
+  font-family: "Raleway";
+  font-weight: 400;
+  font-size: 0.7291666667vw;
+  color: #BEBEBE;
+}
+.input-details:-ms-input-placeholder {
+  font-family: "Raleway";
+  font-weight: 400;
+  font-size: 0.7291666667vw;
+  color: #BEBEBE;
+}
+.input-details::placeholder {
+  font-family: "Raleway";
+  font-weight: 400;
+  font-size: 0.7291666667vw;
+  color: #BEBEBE;
+}
+
+.data-and-privacy {
+  font-family: "Raleway";
+  font-weight: 400;
+  font-size: 0.6770833333vw;
+  color: #E7E7E7;
+  text-align: center;
+  padding-top: 0.5729166667vw;
+}
+
+.btn {
+  border: none;
+  width: 13.28125vw;
+  height: 2.6041666667vw;
+  background-color: #D4C17F;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.btn a {
+  font-family: "Raleway";
+  font-weight: 700;
+  font-size: 0.8333333333vw;
+  transition: 0.5s;
+}
+.btn a:hover {
+  font-size: 0.9375vw;
+}
+
+.video__wrapper {
+  width: 37.4479166667vw;
+  height: 33.8541666667vw;
+  margin-left: 30.9895833333vw;
+  background-image: url(../img/video-background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.video__wrapper .play-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 16.09375vw;
+  margin-top: 14.3229166667vw;
+}
+.video__wrapper .play-button img {
+  width: 5.2083333333vw;
+  height: 5.2083333333vw;
+  transition: 0.5s;
+}
+.video__wrapper .play-button img:hover {
+  scale: 1.2;
+}
+.video__wrapper::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../img/IV.svg);
+  width: 23.4375vw;
+  height: 16.6666666667vw;
+  left: 37.7604166667vw;
+  top: 9.375vw;
+}
+
+.location {
+  margin-top: 9.375vw;
+  margin-bottom: 9.375vw;
+  margin-left: 21.09375vw;
+  width: 57.8125vw;
+  position: relative;
+}
+.location h2 {
+  margin-bottom: 5.2083333333vw;
+}
+.location__map {
+  height: 18.6458333333vw;
+}
+.location__map iframe {
+  width: 57.8125vw;
+  height: 18.6458333333vw;
+}
+.location:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../img/V.svg);
+  width: 16.6666666667vw;
+  height: 16.6666666667vw;
+  top: 4.1666666667vw;
+  left: -7.8125vw;
+}
+
+.cta-form {
+  width: 58.0729166667vw;
+  margin-left: 20.8333333333vw;
+  margin-bottom: 9.375vw;
+}
+.cta-form__input-areas {
+  margin-top: 2.6041666667vw;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.6041666667vw;
+}
+
+.footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 57.96875vw;
+  margin-left: 21.09375vw;
+  margin-bottom: 2.65625vw;
+}
+.footer__wrapper_ways-to-contact .contact-details p {
+  font-family: "Raleway";
+  font-weight: 400;
+  font-size: 0.7291666667vw;
+  margin-bottom: 0.78125vw;
+}
+.footer__wrapper_ways-to-contact .contact-details p a {
+  color: #D4C17F;
+  cursor: pointer;
+  font-weight: 700;
+}
+.footer__wrapper_ways-to-contact .social-media {
+  margin-top: 0.2604166667vw;
+  width: 8.59375vw;
+  height: 1.0416666667vw;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.footer__wrapper_ways-to-contact .social-media img:hover {
+  scale: 1.2;
+}
+
+@media screen and (max-width: 600px) {
+  .header__top-info {
+    width: 100%;
+    justify-content: center;
+    padding-top: 2.6041666667vw;
+    margin-bottom: 7.2916666667vw;
+  }
+  .header__top-info_menu {
+    display: none;
+  }
+  .header__center-info {
+    width: 46.875vw;
+  }
+  .header__center-info h1 {
+    font-size: 4.6875vw;
+  }
+  .header__center-info_contact-details {
+    flex-direction: column;
+    margin-top: 28.6458333333vw;
+  }
+  .header__center-info_contact-details a {
+    font-size: 2.0833333333vw;
+    text-align: center;
+    margin-bottom: 3.125vw;
+  }
+  .logo img {
+    width: 26.0416666667vw;
+  }
+  .residence-advantages {
+    flex-direction: column;
+  }
+  .apartments__example {
+    justify-content: center;
+  }
+  .footer__wrapper {
+    flex-direction: column;
+  }
+  .footer__wrapper .logo {
+    display: none;
+  }
+}/*# sourceMappingURL=style.css.map */

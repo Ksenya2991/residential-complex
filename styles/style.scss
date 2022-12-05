@@ -1,0 +1,464 @@
+@use "sass:math";
+@function toVw($target) {
+    $vw-context: (1920 * 0.01) * 1px;
+    @return math.div($target, $vw-context) * 1vw;
+}
+
+@import "colors.scss";
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400;700&family=Roboto:wght@300&display=swap');
+
+@import "mixins.scss";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*border: toVw(1px) solid white;*/
+}
+
+body, html{
+    font-family: 'Roboto', 'Raleway', 'Playfair Display', 'Sans-serif';
+    color: $c-white;
+    background-color: $c-dark;
+}
+
+a{
+    text-decoration: none;
+    color: $c-white;
+}
+
+ul{
+    list-style: none;
+}
+
+h2{
+    font-family: 'Playfair Display';
+    font-weight: 700;
+    font-size: toVw(36px);
+    color: $c-accent;
+}
+
+.logo{
+    img{
+        width: toVw(134px);
+    }
+}
+
+.menu-link{
+    font-size: toVw(14px);
+    font-family: 'Raleway';
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    &::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: toVw(1px);
+        bottom: toVw(-3px);
+        left: 0;
+        background-color: $c-white;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+    &:hover::after{
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+}
+
+.header{
+    background-image: url(../img/header-background.jpg);
+    @include bg-default();
+    height: 100vh;
+
+    &__top-info{
+        width: toVw(1112px);
+        margin: auto;
+        @include flex-between();
+        padding-top: toVw(30px);
+        margin-bottom: toVw(225px);
+
+        &_menu{
+            @include align-items-center();
+            gap: toVw(40px);
+        }
+    }
+
+    &__center-info{
+        width: toVw(582px);
+        margin: auto;
+        h1{
+            font-family: 'Playfair Display';
+            font-size: toVw(48px);
+            font-weight: 700;
+            text-align: center;
+            color: $c-accent;
+            position: relative;
+
+            &::after{
+                @include after();
+                background-image: url(../img/mouse.svg);
+                @include bg-default();
+                width: toVw(40px);
+                height: toVw(40px);
+                margin-top: toVw(15px);
+                left: 50%;
+                animation: mouse 3s linear 0s infinite normal none;
+                animation-play-state: running;
+                @keyframes mouse {
+                    0%{
+                        transform: translateY(0);
+                    }
+                    50%{
+                        transform: translateY(100px);
+                    }
+                    100%{
+                        transform: translateY(0);
+                    }
+                }
+            }
+        }
+        &_contact-details{
+            width: toVw(529px);
+            margin: auto;
+            @include flex-between();
+            margin-top: toVw(340px);
+            a{
+                font-family: 'Raleway';
+                font-weight: 400;
+                font-size: toVw(18px);
+            }
+            .address{
+                position: relative;
+                &::before{
+                    @include after();
+                    @include bg-default();
+                    background-image: url(../img/map-point-icon.svg);
+                    width: toVw(21px);
+                    height: toVw(21px);
+                    left: toVw(-40px);
+                    top: 0;
+                }
+            }
+            .phone-number{
+                position: relative;
+                &::before{
+                    @include after();
+                    @include bg-default();
+                    background-image: url(../img/phone-call-icon.svg);
+                    width: toVw(21px);
+                    height: toVw(21px);
+                    left: toVw(-40px);
+                }
+            }
+        }
+    }
+}
+
+.residence-advantages{
+    width: toVw(794px);
+    @include flex-between();
+    margin: auto;
+    margin-top: toVw(120px);
+    margin-bottom: toVw(120px);
+    position: relative;
+
+    &__block{
+        text-align: center;
+        p{
+            font-family: 'Roboto';
+            font-size: toVw(20px);
+            font-weight: 300;
+            margin-top: toVw(53px);
+        }
+    }
+    &::after{
+        @include after();
+        background-image: url(../img/II.svg);
+        @include bg-default();
+        width: toVw(301px);
+        height: toVw(320px);
+        left: toVw(794px);
+
+    }
+}
+
+.apartments{
+    width: toVw(1100px);
+    margin: auto;
+    position: relative;
+
+    &__example{
+        @include flex-between();
+        flex-wrap: wrap;
+        gap: toVw(30px);
+        margin-top: toVw(100px);
+        &_item{
+            position: relative;
+            cursor: pointer;
+            .item-img{
+                transition: 1s;
+                img{
+                    width: toVw(535px);
+                }
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+            .item-title{
+                font-family: 'Raleway';
+                font-weight: 400;
+                font-size: toVw(24px);
+                position: absolute;
+                left: toVw(50px);
+                bottom: toVw(50px);
+            }
+        }
+    }
+    &::after{
+        @include after();
+        @include bg-default();
+        background-image: url(../img/III.svg);
+        width: toVw(480px);
+        height: toVw(320px);
+        top: toVw(100px);
+        left: toVw(-230px);
+    }
+}
+
+.cta{
+    background-image: url(../img/cta-background.jpg);
+    @include bg-default();
+    height: 100vh;
+    padding: toVw(180px) toVw(405px);
+    height: toVw(560px);
+
+    &__wrapper{
+        width: toVw(1110px);
+        margin: auto;
+        @include flex-between();
+        &_content{
+            p{
+                font-family: 'Raleway';
+                font-weight: 400;
+                font-size: toVw(16px);
+                margin-top: toVw(50px);
+            }
+        }
+
+        &_form{
+            width: toVw(540px);
+            padding-top: toVw(65px);
+            &_details{
+                @include flex-between();
+                margin-bottom: toVw(35px);
+            }
+        }
+    }
+}
+
+.input-details{
+    display: block;
+    border: none;
+    width: toVw(255px);
+    height: toVw(50px);
+    background-color: rgba(255, 255, 255, 0.2);
+    padding-left: toVw(90px);
+    font-family: 'Raleway';
+    font-weight: 400;
+    font-size: toVw(14px);
+    color: $c-grey;
+    &::placeholder{
+        font-family: 'Raleway';
+        font-weight: 400;
+        font-size: toVw(14px);
+        color: $c-grey;
+    }
+}
+
+.data-and-privacy{
+    font-family: 'Raleway';
+    font-weight: 400;
+    font-size: toVw(13px);
+    color: #E7E7E7;
+    text-align: center;
+    padding-top: toVw(11px);
+}
+.btn{
+    border: none;
+    width: toVw(255px);
+    height: toVw(50px);
+    background-color: $c-accent;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s;
+    &:hover{
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    a{
+        font-family: 'Raleway';
+        font-weight: 700;
+        font-size: toVw(16px);
+        transition: 0.5s;
+        &:hover{
+            font-size: toVw(18px);
+        }
+    }
+}
+
+.video__wrapper{
+    width: toVw(719px);
+    height: toVw(650px);
+    margin-left: toVw(595px);
+    background-image: url(../img/video-background.jpg);
+    @include bg-default();
+    position: relative;
+    .play-button{
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-left: toVw(309px);
+        margin-top: toVw(275px);
+        img{
+            width: toVw(100px);
+            height: toVw(100px);
+            transition: 0.5s;
+            &:hover{
+                scale: 1.2;
+            }
+        }
+    }
+    &::after{
+        @include after();
+        @include bg-default();
+        background-image: url(../img/IV.svg);
+        width: toVw(450px);
+        height: toVw(320px);
+        left: toVw(725px);
+        top: toVw(180px);
+    }
+}
+
+.location{
+    margin-top: toVw(180px);
+    margin-bottom: toVw(180px);
+    margin-left: toVw(405px);
+    width: toVw(1110px);
+    position: relative;
+    h2{
+        margin-bottom: toVw(100px);
+    }
+    &__map{
+        height: toVw(358px);
+        iframe{
+            width: toVw(1110px);
+            height: toVw(358px);
+        }
+    }
+    &:after{
+        @include after();
+        @include bg-default();
+        background-image: url(../img/V.svg);
+        width: toVw(320px);
+        height: toVw(320px);
+        top: toVw(80px);
+        left: toVw(-150px);
+    }
+}
+
+.cta-form{
+    width: toVw(1115px);
+    margin-left: toVw(400px);
+    margin-bottom: toVw(180px);
+    &__input-areas{
+        margin-top: toVw(50px);
+        @include flex-between();
+        margin-top: toVw(50px);
+    }
+}
+
+.footer__wrapper{
+    @include flex-between();
+    width: toVw(1113px);
+    margin-left: toVw(405px);
+    margin-bottom: toVw(51px);
+    &_ways-to-contact{
+        .contact-details{
+            p{
+                font-family: 'Raleway';
+                font-weight: 400;
+                font-size: toVw(14px);
+                margin-bottom: toVw(15px);
+                a{
+                    color: $c-accent;
+                    cursor: pointer;
+                    font-weight: 700;
+                }
+            }
+        }
+        .social-media{
+            margin-top: toVw(5px);
+            width: toVw(165px);
+            height: toVw(20px);
+            @include flex-between();
+            cursor: pointer;
+            img:hover{
+                scale: 1.2;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px){
+    .header{
+        &__top-info{
+            width: 100%;
+            justify-content: center;
+            padding-top: toVw(50px);
+            margin-bottom: toVw(140px);
+            &_menu{
+                display: none;
+            }
+        }
+        &__center-info{
+            width: toVw(900px);
+            h1{
+                font-size: toVw(90px);
+            }
+            &_contact-details{
+                flex-direction: column;
+                margin-top: toVw(550px);
+                a{
+                    font-size: toVw(40px);
+                    text-align: center;
+                    margin-bottom: toVw(60px);
+                }
+            }
+        }
+    }
+    .logo{
+        img{
+            width: toVw(500px);
+        }
+    }
+    .residence-advantages{
+        flex-direction: column;
+    }
+
+    .apartments{
+        &__example{
+            justify-content: center;
+        }
+    }
+    .footer__wrapper{
+        flex-direction: column;
+        .logo{
+            display: none;
+        }
+    }
+}
+
+
