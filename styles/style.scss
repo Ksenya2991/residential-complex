@@ -14,18 +14,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /*border: toVw(1px) solid white;*/
 }
 
 body, html{
-    font-family: 'Roboto', 'Raleway', 'Playfair Display', 'Sans-serif';
     color: $c-white;
     background-color: $c-dark;
+    font-family: 'Roboto', 'Raleway', 'Playfair Display', 'Sans-serif';
 }
 
 a{
-    text-decoration: none;
     color: $c-white;
+    text-decoration: none;
 }
 
 ul{
@@ -33,32 +32,66 @@ ul{
 }
 
 h2{
-    font-family: 'Playfair Display';
     font-weight: 700;
-    font-size: toVw(36px);
     color: $c-accent;
+    font-size: toVw(36px);
+    font-family: 'Playfair Display';
+    @include media('phone-only'){
+        font-size: 20px;
+        text-align: center;
+    }
+}
+
+.burger{
+    display: none;
+    @include media('phone-only'){
+        top: 20px;
+        left: 15px;
+        width: 30px;
+        height: 30px;
+        border: none;
+        position: fixed;
+        cursor: pointer;
+        flex-direction: column;
+        @include flex-between();
+    }
+    hr{
+        @include media('phone-only'){
+            height: 5px;
+            border: none;
+            background-color: $c-white;
+        }
+    &:active{
+        @include media('phone-only'){
+            box-shadow: 0 0 5px 1px $c-white;
+        }
+    }
+    }
 }
 
 .logo{
     img{
         width: toVw(134px);
+        @include media('phone-only'){
+            width: 130px;      
+        }
     }
 }
 
 .menu-link{
-    font-size: toVw(14px);
-    font-family: 'Raleway';
     cursor: pointer;
-    display: inline-block;
     position: relative;
+    font-size: toVw(14px);
+    display: inline-block;
+    font-family: 'Raleway';
     &::after{
-        content: '';
-        position: absolute;
-        width: 100%;
-        transform: scaleX(0);
-        height: toVw(1px);
-        bottom: toVw(-3px);
         left: 0;
+        content: '';
+        width: 100%;
+        height: toVw(1px);
+        position: absolute;
+        bottom: toVw(-3px);
+        transform: scaleX(0);
         background-color: $c-white;
         transform-origin: bottom right;
         transition: transform 0.25s ease-out;
@@ -67,185 +100,262 @@ h2{
         transform: scaleX(1);
         transform-origin: bottom left;
     }
+    @include media('phone-only'){
+        font-size: 10px;
+    }
 }
 
 .header{
-    background-image: url(../img/header-background.jpg);
-    @include bg-default();
     height: 100vh;
+    @include bg-default();
+    background-image: url(../img/header-background.jpg);
+    @include media('phone-only'){
+        height: auto;
+    }
 
     &__top-info{
-        width: toVw(1112px);
         margin: auto;
+        width: toVw(1112px);
         @include flex-between();
         padding-top: toVw(30px);
         margin-bottom: toVw(225px);
+        @include media('phone-only'){
+            padding-top: 10px;
+            justify-content: center;
+        }
 
         &_menu{
-            @include align-items-center();
             gap: toVw(40px);
+            @include align-items-center();
+            @include media('phone-only'){
+                display: none;       
+            }
         }
     }
 
     &__center-info{
-        width: toVw(582px);
         margin: auto;
+        width: toVw(582px);
         h1{
-            font-family: 'Playfair Display';
-            font-size: toVw(48px);
             font-weight: 700;
-            text-align: center;
             color: $c-accent;
+            text-align: center;
             position: relative;
-
-            &::after{
-                @include after();
-                background-image: url(../img/mouse.svg);
-                @include bg-default();
-                width: toVw(40px);
-                height: toVw(40px);
-                margin-top: toVw(15px);
+            font-size: toVw(48px);
+            font-family: 'Playfair Display';
+            @include media('phone-only'){
+                font-size: 25px;
+            }
+        }
+        .mouse{
+            left: 50%;
+            content: '';
+            display: block;
+            width: toVw(27px);
+            height: toVw(40px);
+            border-radius: 40%;
+            position: relative;
+            margin-top: toVw(100px);
+            border: $c-accent toVw(3px) solid;
+            @include media('phone-only'){
+                left: 47%;
+                width: 20px;
+                height: 30px;
+                border: $c-accent 2px solid;
+            }
+            span{
                 left: 50%;
-                animation: mouse 3s linear 0s infinite normal none;
+                top: toVw(5px);
+                @include after();
+                width: toVw(3px);
+                height: toVw(8px);
+                border: $c-accent;
+                border-radius: 30%;
+                background-color: $c-accent;
                 animation-play-state: running;
-                @keyframes mouse {
+                animation: pull 3s linear 0s infinite normal none;
+                @keyframes pull {
                     0%{
                         transform: translateY(0);
                     }
                     50%{
-                        transform: translateY(100px);
+                        transform: translateY(8px);
                     }
                     100%{
                         transform: translateY(0);
                     }
                 }
+                @include media('phone-only'){
+                    left: 48%;
+                    width: 2px;
+                    height: 6px;
+                }
             }
         }
+
         &_contact-details{
-            width: toVw(529px);
             margin: auto;
+            width: toVw(529px);
             @include flex-between();
-            margin-top: toVw(340px);
+            margin-top: toVw(200px);
             a{
-                font-family: 'Raleway';
                 font-weight: 400;
                 font-size: toVw(18px);
+                font-family: 'Raleway';
+                @include media('phone-only'){
+                    font-size: 12px;
+                    margin-bottom: 15px;
+                }
             }
             .address{
                 position: relative;
                 &::before{
+                    top: 0;
                     @include after();
+                    width: toVw(21px);
+                    left: toVw(-40px);
+                    height: toVw(21px);
                     @include bg-default();
                     background-image: url(../img/map-point-icon.svg);
-                    width: toVw(21px);
-                    height: toVw(21px);
-                    left: toVw(-40px);
-                    top: 0;
+                    @include media('phone-only'){
+                        top: -2px;
+                        width: 15px;
+                        left: -20px;
+                        height: 15px;
+                    }
                 }
             }
             .phone-number{
                 position: relative;
                 &::before{
                     @include after();
+                    width: toVw(21px);
+                    left: toVw(-40px);
+                    height: toVw(21px);
                     @include bg-default();
                     background-image: url(../img/phone-call-icon.svg);
-                    width: toVw(21px);
-                    height: toVw(21px);
-                    left: toVw(-40px);
+                    @include media('phone-only'){
+                        top: -2px;
+                        width: 15px;
+                        left: -20px;
+                        height: 15px;
+                    }
                 }
             }
+            @include media('phone-only'){
+                width: auto;
+                margin-top: 40px;
+                align-items: center;
+                flex-direction: column;
+            }
+        }
+        @include media('phone-only'){
+            width: auto;
         }
     }
 }
 
 .residence-advantages{
-    width: toVw(794px);
-    @include flex-between();
     margin: auto;
+    width: toVw(794px);
+    position: relative;
+    @include flex-between();
     margin-top: toVw(120px);
     margin-bottom: toVw(120px);
-    position: relative;
 
     &__block{
         text-align: center;
         p{
+            font-weight: 300;
             font-family: 'Roboto';
             font-size: toVw(20px);
-            font-weight: 300;
             margin-top: toVw(53px);
+            @include media('phone-only'){
+                font-size: 15px;
+            }
+        }
+        @include media('phone-only'){
+            margin-bottom: 30px;
         }
     }
-    &::after{
-        @include after();
-        background-image: url(../img/II.svg);
-        @include bg-default();
-        width: toVw(301px);
-        height: toVw(320px);
-        left: toVw(794px);
-
+    @include media('phone-only'){
+        margin-top: 60px;
+        flex-direction: column;
     }
 }
 
 .apartments{
-    width: toVw(1100px);
     margin: auto;
     position: relative;
+    width: toVw(1100px);
 
     &__example{
-        @include flex-between();
         flex-wrap: wrap;
         gap: toVw(30px);
+        @include flex-between();
         margin-top: toVw(100px);
         &_item{
-            position: relative;
             cursor: pointer;
+            position: relative;
             .item-img{
                 transition: 1s;
                 img{
                     width: toVw(535px);
+                    @include media('phone-only'){
+                        width: 300px;
+                    }
                 }
                 &:hover{
                     transform: scale(1.1);
                 }
             }
             .item-title{
-                font-family: 'Raleway';
                 font-weight: 400;
-                font-size: toVw(24px);
-                position: absolute;
                 left: toVw(50px);
+                position: absolute;
                 bottom: toVw(50px);
+                font-size: toVw(24px);
+                font-family: 'Raleway';
+                @include media('phone-only'){
+                    font-size: 15px;
+                }
             }
         }
+        @include media('phone-only'){
+            gap: 20px;
+            align-items: center;
+            flex-direction: column;
+        }
     }
-    &::after{
-        @include after();
-        @include bg-default();
-        background-image: url(../img/III.svg);
-        width: toVw(480px);
-        height: toVw(320px);
-        top: toVw(100px);
-        left: toVw(-230px);
+    @include media('phone-only'){
+        width: auto;
     }
 }
 
 .cta{
-    background-image: url(../img/cta-background.jpg);
-    @include bg-default();
-    height: 100vh;
-    padding: toVw(180px) toVw(405px);
     height: toVw(560px);
+    @include bg-default();
+    padding: toVw(180px) toVw(405px);
+    background-image: url(../img/cta-background.jpg);
 
     &__wrapper{
-        width: toVw(1110px);
         margin: auto;
+        width: toVw(1110px);
         @include flex-between();
         &_content{
+            width: toVw(535px);
+            @include media('phone-only'){
+                width: auto;
+            }
             p{
-                font-family: 'Raleway';
                 font-weight: 400;
                 font-size: toVw(16px);
+                font-family: 'Raleway';
                 margin-top: toVw(50px);
+                @include media('phone-only'){
+                    font-size: 10px;
+                    text-align: center;
+                }
             }
         }
 
@@ -255,99 +365,141 @@ h2{
             &_details{
                 @include flex-between();
                 margin-bottom: toVw(35px);
+                @include media('phone-only'){
+                    gap: 15px;
+                    align-items: center;
+                    margin-bottom: 15px;
+                    flex-direction: column;
+                }
+            }
+            &_details, reverse{
+                @include media('phone-only'){
+                    flex-direction: column-reverse;
+                }
+            }
+            @include media('phone-only'){
+                width: auto;
+                padding-top: 20px;
             }
         }
+        @include media('phone-only'){
+            align-items: center;
+            flex-direction: column;
+        }
+    }
+    @include media('phone-only'){
+        height: auto;
     }
 }
 
 .input-details{
-    display: block;
     border: none;
+    display: block;
+    color: $c-grey;
+    font-weight: 400;
     width: toVw(255px);
     height: toVw(50px);
-    background-color: rgba(255, 255, 255, 0.2);
-    padding-left: toVw(90px);
-    font-family: 'Raleway';
-    font-weight: 400;
     font-size: toVw(14px);
-    color: $c-grey;
+    font-family: 'Raleway';
+    padding-left: toVw(90px);
+    background-color: rgba(255, 255, 255, 0.2);
     &::placeholder{
-        font-family: 'Raleway';
+        color: $c-grey;
         font-weight: 400;
         font-size: toVw(14px);
-        color: $c-grey;
+        font-family: 'Raleway';
+        @include media('phone-only'){
+            font-size: 10px;
+            text-align: center;
+        }
+    }
+    @include media('phone-only'){
+        width: 150px;
+        height: 35px;
+        padding-left: 0;
     }
 }
 
 .data-and-privacy{
-    font-family: 'Raleway';
-    font-weight: 400;
-    font-size: toVw(13px);
     color: #E7E7E7;
+    font-weight: 400;
     text-align: center;
+    font-size: toVw(13px);
+    font-family: 'Raleway';
     padding-top: toVw(11px);
+    @include media('phone-only'){
+        font-size: 8px;
+    }
 }
+
 .btn{
     border: none;
-    width: toVw(255px);
-    height: toVw(50px);
-    background-color: $c-accent;
-    text-align: center;
     cursor: pointer;
     transition: 0.5s;
+    width: toVw(255px);
+    height: toVw(50px);
+    text-align: center;
+    background-color: $c-accent;
     &:hover{
         background-color: rgba(255, 255, 255, 0.2);
     }
     a{
-        font-family: 'Raleway';
         font-weight: 700;
-        font-size: toVw(16px);
         transition: 0.5s;
+        font-size: toVw(16px);
+        font-family: 'Raleway';
         &:hover{
             font-size: toVw(18px);
         }
+        @include media('phone-only'){
+            font-size: 10px;
+        }
+    }
+    @include media('phone-only'){
+        width: 150px;
+        height: 35px;
     }
 }
 
 .video__wrapper{
+    margin: auto;
     width: toVw(719px);
-    height: toVw(650px);
-    margin-left: toVw(595px);
-    background-image: url(../img/video-background.jpg);
-    @include bg-default();
     position: relative;
+    height: toVw(650px);
+    @include bg-default();
+    background-image: url(../img/video-background.jpg);
     .play-button{
-        background: none;
+        top: 42%;
+        left: 44%;
         border: none;
         cursor: pointer;
-        margin-left: toVw(309px);
-        margin-top: toVw(275px);
+        background: none;
+        position: absolute;
         img{
+            transition: 0.5s;
             width: toVw(100px);
             height: toVw(100px);
-            transition: 0.5s;
             &:hover{
                 scale: 1.2;
             }
+            @include media('phone-only'){
+                width: 40px;
+                height: 40px;
+            }
         }
     }
-    &::after{
-        @include after();
-        @include bg-default();
-        background-image: url(../img/IV.svg);
-        width: toVw(450px);
-        height: toVw(320px);
-        left: toVw(725px);
-        top: toVw(180px);
+    @include media('phone-only'){
+        width: 319px;
+        height: 250px;
     }
 }
 
 .location{
+    margin: auto;
+    position: relative;
+    width: toVw(1110px);
     margin-top: toVw(180px);
     margin-bottom: toVw(180px);
-    margin-left: toVw(405px);
-    width: toVw(1110px);
-    position: relative;
     h2{
         margin-bottom: toVw(100px);
     }
@@ -356,16 +508,17 @@ h2{
         iframe{
             width: toVw(1110px);
             height: toVw(358px);
+            @include media('phone-only'){
+                width: 300px;
+                height: auto;
+            }
+        }
+        @include media('phone-only'){
+            height: auto;
         }
     }
-    &:after{
-        @include after();
-        @include bg-default();
-        background-image: url(../img/V.svg);
-        width: toVw(320px);
-        height: toVw(320px);
-        top: toVw(80px);
-        left: toVw(-150px);
+    @include media('phone-only'){
+        width: 300px;
     }
 }
 
@@ -376,88 +529,73 @@ h2{
     &__input-areas{
         margin-top: toVw(50px);
         @include flex-between();
-        margin-top: toVw(50px);
+        @include media('phone-only'){
+            gap: 20px;
+            align-items: center;
+            flex-direction: column;
+        }
     }
 }
 
 .footer__wrapper{
-    @include flex-between();
+    margin: auto;
     width: toVw(1113px);
-    margin-left: toVw(405px);
+    margin-top: toVw(72px);
+    @include flex-between();
     margin-bottom: toVw(51px);
+
+    .logo{
+        @include media('phone-only'){
+            display: none;
+        }
+    }
+    &_menu{
+        @include media('phone-only'){
+            width: 300px;
+            @include flex-between;
+        }
+    }
     &_ways-to-contact{
         .contact-details{
             p{
-                font-family: 'Raleway';
                 font-weight: 400;
                 font-size: toVw(14px);
+                font-family: 'Raleway';
                 margin-bottom: toVw(15px);
                 a{
-                    color: $c-accent;
                     cursor: pointer;
+                    color: $c-accent;
                     font-weight: 700;
+                }
+                @include media('phone-only'){
+                    font-size: 10px;
+                    line-height: 20px;
+                    text-align: center;
                 }
             }
         }
         .social-media{
-            margin-top: toVw(5px);
+            cursor: pointer;
             width: toVw(165px);
             height: toVw(20px);
+            margin-top: toVw(5px);
             @include flex-between();
-            cursor: pointer;
             img:hover{
                 scale: 1.2;
             }
-        }
-    }
-}
-
-@media screen and (max-width: 600px){
-    .header{
-        &__top-info{
-            width: 100%;
-            justify-content: center;
-            padding-top: toVw(50px);
-            margin-bottom: toVw(140px);
-            &_menu{
-                display: none;
-            }
-        }
-        &__center-info{
-            width: toVw(900px);
-            h1{
-                font-size: toVw(90px);
-            }
-            &_contact-details{
-                flex-direction: column;
-                margin-top: toVw(550px);
-                a{
-                    font-size: toVw(40px);
-                    text-align: center;
-                    margin-bottom: toVw(60px);
-                }
+            @include media('phone-only'){
+                width: 200px;
+                height: auto;
+                margin-top: 15px;
             }
         }
     }
-    .logo{
-        img{
-            width: toVw(500px);
-        }
-    }
-    .residence-advantages{
+    @include media('phone-only'){
+        gap: 20px;
+        width: auto;
+        align-items: center;
+        margin-bottom: 20px;
         flex-direction: column;
-    }
-
-    .apartments{
-        &__example{
-            justify-content: center;
-        }
-    }
-    .footer__wrapper{
-        flex-direction: column;
-        .logo{
-            display: none;
-        }
     }
 }
 
