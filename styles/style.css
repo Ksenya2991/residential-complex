@@ -301,7 +301,6 @@ h2 {
 .residence-advantages {
   margin: auto;
   width: 41.3541666667vw;
-  position: relative;
   display: flex;
   justify-content: space-between;
   margin-top: 6.25vw;
@@ -309,6 +308,21 @@ h2 {
 }
 .residence-advantages__block {
   text-align: center;
+}
+@media (max-width: 600px) {
+  .residence-advantages__block:nth-child(3) {
+    margin-left: 20px;
+  }
+}
+.residence-advantages__block img {
+  width: 4.1666666667vw;
+  height: 4.1666666667vw;
+}
+@media (max-width: 600px) {
+  .residence-advantages__block img {
+    width: 50px;
+    height: 50px;
+  }
 }
 .residence-advantages__block p {
   font-weight: 300;
@@ -318,7 +332,7 @@ h2 {
 }
 @media (max-width: 600px) {
   .residence-advantages__block p {
-    font-size: 15px;
+    font-size: 12px;
   }
 }
 @media (max-width: 600px) {
@@ -328,8 +342,9 @@ h2 {
 }
 @media (max-width: 600px) {
   .residence-advantages {
+    width: 250px;
+    flex-wrap: wrap;
     margin-top: 60px;
-    flex-direction: column;
   }
 }
 

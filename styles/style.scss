@@ -258,20 +258,32 @@ h2{
 .residence-advantages{
     margin: auto;
     width: toVw(794px);
-    position: relative;
     @include flex-between();
     margin-top: toVw(120px);
     margin-bottom: toVw(120px);
 
     &__block{
         text-align: center;
+        @include media('phone-only'){
+            &:nth-child(3){
+                margin-left: 20px;
+            }
+        }
+        img{
+            width: toVw(80px);
+            height: toVw(80px);
+            @include media('phone-only'){
+                width: 50px;
+                height: 50px;
+            }
+        }
         p{
             font-weight: 300;
             font-family: 'Roboto';
             font-size: toVw(20px);
             margin-top: toVw(53px);
             @include media('phone-only'){
-                font-size: 15px;
+                font-size: 12px;
             }
         }
         @include media('phone-only'){
@@ -279,8 +291,9 @@ h2{
         }
     }
     @include media('phone-only'){
+        width: 250px;
+        flex-wrap: wrap;
         margin-top: 60px;
-        flex-direction: column;
     }
 }
 
